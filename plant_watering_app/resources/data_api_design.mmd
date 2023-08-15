@@ -1,0 +1,56 @@
+classDiagram
+    class Plant{
+        +int id
+        +str name
+        +str species
+        +int watering_frequency
+        +int watering_amount
+        +str season
+        +str image_url
+        +List[WateringSchedule] watering_schedules
+    }
+    class User{
+        +int id
+        +str name
+        +str email
+        +List[Plant] plants
+    }
+    class WateringSchedule{
+        +int id
+        +datetime.datetime date
+        +bool is_completed
+        +Plant plant
+    }
+    class Weather{
+        +int id
+        +float temperature
+        +float humidity
+        +str description
+    }
+    class Notification{
+        +int id
+        +str message
+        +datetime.datetime timestamp
+        +User user
+    }
+    class PlantWateringApp{
+        +User user
+        +Weather weather
+        +List[Notification] notifications
+        +List[Plant] get_plants()
+        +Plant get_plant(int plant_id)
+        +void add_plant(Plant plant)
+        +void update_plant(Plant plant)
+        +void delete_plant(int plant_id)
+        +void water_plant(int plant_id)
+        +void complete_watering_schedule(int watering_schedule_id)
+        +void send_notification(str message)
+        +void update_weather()
+    }
+    PlantWateringApp "1" -- "1" User: has
+    PlantWateringApp "1" -- "1" Weather: has
+    PlantWateringApp "1" -- "0..*" Notification: has
+    User "1" -- "0..*" Plant: has
+    Plant "1" -- "0..*" WateringSchedule: has
+    WateringSchedule "1" -- "1" Plant: belongs to
+    Notification "1" -- "1" User: belongs to

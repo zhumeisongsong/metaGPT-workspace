@@ -1,0 +1,24 @@
+classDiagram
+    class Game{
+        -int score
+        -int width
+        -int height
+        -int delay
+        -int direction
+        -list[int] snake_x
+        -list[int] snake_y
+        -int food_x
+        -int food_y
+        -bool game_over
+        +__init__(self, width: int, height: int, delay: int)
+        +init_game(self)
+        +draw_border(self)
+        +draw_snake(self)
+        +draw_food(self)
+        +display_score(self)
+        +get_user_input(self)
+        +move_snake(self)
+        +check_collision(self)
+        +game_loop(self)
+        +start(self)
+    }

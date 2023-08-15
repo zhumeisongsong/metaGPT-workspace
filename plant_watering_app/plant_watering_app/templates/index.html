@@ -1,0 +1,41 @@
+## templates/index.html
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Plant Watering App</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Plant Watering App</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/plants">Plants</a></li>
+            <li><a href="/notifications">Notifications</a></li>
+            <li><a href="/settings">Settings</a></li>
+        </ul>
+    </nav>
+    <main>
+        <h2>Welcome, {{ user.name }}!</h2>
+        <h3>Your Plant Collection</h3>
+        <ul>
+            {% for plant in plants %}
+                <li>
+                    <img src="{{ plant.image_url }}" alt="{{ plant.name }}">
+                    <h4>{{ plant.name }}</h4>
+                    <p>Species: {{ plant.species }}</p>
+                    <p>Watering Frequency: {{ plant.watering_frequency }} days</p>
+                    <p>Watering Amount: {{ plant.watering_amount }} ml</p>
+                    <p>Season: {{ plant.season }}</p>
+                </li>
+            {% endfor %}
+        </ul>
+    </main>
+    <footer>
+        <p>&copy; 2021 Plant Watering App</p>
+    </footer>
+</body>
+</html>

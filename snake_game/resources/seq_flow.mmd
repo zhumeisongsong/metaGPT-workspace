@@ -1,0 +1,17 @@
+sequenceDiagram
+    participant M as Main
+    M->>Game: start()
+    Game->>Game: init_game()
+    Game->>Game: game_loop()
+    Game->>Game: draw_border()
+    Game->>Game: draw_snake()
+    Game->>Game: draw_food()
+    Game->>Game: display_score()
+    Game->>Game: get_user_input()
+    Game->>Game: move_snake()
+    Game->>Game: check_collision()
+    Game->>Game: game_over
+    Game->>Game: display_score()
+    Game->>Game: get_user_input()
+    Game->>Game: restart
+    Game->>Game: game_loop()
