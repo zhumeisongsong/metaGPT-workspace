@@ -1,0 +1,32 @@
+sequenceDiagram
+    participant User
+    participant Workflow
+    participant Task
+    participant Action
+    participant API
+
+    User->>+Workflow: create_workflow(data)
+    Workflow->>+Task: add_task(data)
+    Task->>+Action: add_action(data)
+    User->>Workflow: get_workflow(id)
+    Workflow->>Task: get_task(id)
+    Task->>Action: get_action(id)
+    User->>Workflow: get_workflows()
+    Workflow->>Task: get_tasks()
+    Task->>Action: get_actions()
+    User->>Workflow: delete_workflow(id)
+    Workflow->>Task: delete_task(id)
+    Task->>Action: delete_action(id)
+    User->>Workflow: run()
+    Workflow->>Task: run()
+    Task->>Action: run()
+    User->>Workflow: schedule(cron_expression)
+    Workflow->>Task: schedule(cron_expression)
+    User->>API: get(url, params)
+    API->>Response: get(url, params)
+    User->>API: post(url, data)
+    API->>Response: post(url, data)
+    User->>API: put(url, data)
+    API->>Response: put(url, data)
+    User->>API: delete(url)
+    API->>Response: delete(url)
